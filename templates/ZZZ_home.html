@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+
+    <style>
+        /* Global Styles */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f9;
+        color: #333;
+        line-height: 1.8;
+    }
+
+    /* Header */
+    header {
+        background: linear-gradient(90deg, #3E4E6C, #283A59);
+        color: white;
+        text-align: center;
+        padding: 20px 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+        font-size: 2.8em;
+        letter-spacing: 2px;
+        font-weight: bold;
+    }
+
+    /* Navigation */
+    nav {
+        background-color: #333;
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        padding: 15px 10px;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 1.2em;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+        background-color: #3E4E6C;
+        transform: scale(1.1);
+    }
+
+    /* Sections (default left alignment for tabs) */
+    section {
+        display: none; /* Hidden by default */
+        padding: 20px 10px;
+        background: #f4f4f9;
+        text-align: left;
+        margin: 10px 10px;
+    }
+
+    /* Active section (details centered) */
+    section.active {
+        display: block;
+        padding: 30px 20px;
+        margin: 20px auto;
+        max-width: 1450px;
+        border-radius: 10px;
+        background: white;
+        text-align: center;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    section h2 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        color: #3E4E6C;
+    }
+
+    section p, section ul {
+        font-size: 1.1em;
+        color: #555;
+    }
+
+    /* Image Styling */
+    img {
+        width: 100%;
+        max-width: 500px;
+        border-radius: 10px;
+        margin-top: 20px;
+    }
+
+    /* Button Styling */
+    .button-container {
+        text-align: center; /* Center the button container */
+        margin-top: 20px; /* Add space above the button */
+    }
+
+    /* Try it Now Button */
+    .try-it-now-btn {
+        background-color: #007bff; /* Blue color */
+        color: white; /* White text */
+        padding: 10px 20px; /* Padding for the button */
+        border: none; /* No border */
+        border-radius: 5px; /* Rounded corners */
+        font-size: 16px; /* Text size */
+        cursor: pointer; /* Cursor changes to pointer on hover */
+        transition: background-color 0.3s ease; /* Smooth transition */
+        margin-top: 20px; /* Space from other elements */
+    }
+
+    .try-it-now-btn:hover {
+        background-color: #0056b3; /* Darker blue when hovered */
+    }
+
+    /* Footer */
+    footer {
+        background-color: #283A59;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+    }
+
+    footer p {
+        margin: 0;
+    }
+
+    /* Developer Section */
+    .developer {
+        cursor: pointer;
+        margin: 10px 0;
+        font-size: 1.3em;
+        color: #333;
+        transition: color 0.3s ease;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-align: left;
+        position: relative;
+    }
+
+    /* Hover effect for the developer names */
+    .developer:hover {
+        color: #3E4E6C;
+    }
+
+    .developer:hover::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -5px;
+        width: 100%;
+        height: 3px;
+        background-color: #3E4E6C; /* Blue rectangle color */
+        animation: slideIn 0.3s forwards;
+    }
+
+    /* Create the blue line animation */
+    @keyframes slideIn {
+        0% {
+            width: 0;
+        }
+        100% {
+            width: 100%;
+        }
+    }
+
+    .developer img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+    }
+
+    /* Developer Details */
+    .developer-details {
+        display: none;
+        margin-top: 20px;
+        text-align: left;
+    }
+
+    .developer-details.active {
+        display: block;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        nav a {
+            font-size: 1em;
+            padding: 8px 10px;
+        }
+
+        section h2 {
+            font-size: 2em;
+        }
+
+        form {
+            padding: 20px;
+        }
+    }
+
+    </style>
+</head>
+<body>
+    <div id="upload-section">
+        <h2>Upload File</h2>
+        <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+            <input type="file" name="file1" required>
+            <button type="submit">Upload</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        async function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            
+            const form = document.getElementById('uploadForm');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                document.getElementById('result').innerText = result.message;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred!';
+            }
+        }
+    </script>
+</body>
+</html>

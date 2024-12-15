@@ -1,0 +1,246 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.8;
+}
+
+header {
+    background: linear-gradient(90deg, #3E4E6C, #283A59);
+    color: white;
+    text-align: center;
+    padding: 20px 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2.4em;
+font: Calibri;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #3E4E6C;
+    transform: scale(1.1);
+}
+
+section {
+    display: none;
+    padding: 20px 10px;
+    background: #f4f4f9;
+    text-align: left;
+    margin: 10px 10px;
+}
+
+section.active {
+    display: block;
+    padding: 30px 20px;
+    margin: 20px auto;
+    max-width: 1450px;
+    border-radius: 10px;
+    background: white;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #3E4E6C;
+}
+
+nav {
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 15px 10px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #3E4E6C;
+    transform: scale(1.1);
+}
+
+.center-align {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+    /* align-items: center; */
+    height: 100vh;
+}
+
+.center-div {
+    text-align: center;
+}
+input[type="file"] {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+input[type="file"]:hover {
+    background-color: #ddd;
+}
+
+input[type="file"]::-webkit-file-upload-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover {
+    background-color: #45a049;
+}
+
+.upload-button {
+    font-size: 18px;
+    padding: 12px 24px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    margin-top: 12px;
+    margin-left: 22px;
+
+    transition: background-color .15s;
+}
+
+.upload-button:active {
+    background-color: #004085;
+}
+
+#result {
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.code-cell {
+    position: relative;
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: monospace;
+    font-size: 16px;
+    color: #333;
+    overflow-x: auto;
+    margin-top: 30px;
+
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    transition: background-color 0.15s;
+}
+
+.copy-btn:active {
+    background-color: #004085;
+}
+
+.danger-button {
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+
+    margin-top: 20px;
+}
+
+.danger-button:hover {
+    background-color: #c82333;
+    transform: scale(1.05);
+}
+
+.danger-button:active {
+    background-color: #bd2130;
+    transform: scale(0.98);
+}
+
+/* Footer */
+footer {
+    background-color: #283A59;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav a {
+        font-size: 1em;
+        padding: 8px 10px;
+    }
+
+    section h2 {
+        font-size: 2em;
+    }
+
+    form {
+        padding: 20px;
+    }
+}

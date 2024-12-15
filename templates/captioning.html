@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='captioning.css') }}">
+</head>
+<body>
+
+    <header>
+        <h1>Image Captioning</h1>
+    </header>
+
+    <nav>
+        <a href="\index">Home</a>
+        <a href="\captioning">Captioning Model</a>
+        <a href="\about">About Us</a>
+        <a href="\contact">Contact Us</a>
+    </nav>
+
+    <!-- center-align -->
+    <section id="home" class="active">
+
+        <div id="upload-section">
+            <h1>Upload File</h1>
+            <form id="uploadForm" enctype="multipart/form-data" onsubmit="handleFormSubmit(event)">
+                <!-- <input type="file" id="fileInput" name="file1" required onchange="displayFileName()"> -->
+                <input type="file" id="fileInput" name="file1" required>
+                <button class="upload-button" type="submit">Upload</button>
+            </form>
+
+            <div class="code-cell">
+                <button class="copy-btn" onclick="copyCode()">Copy</button>
+                <code id="codeBlock input">
+                    <div id="result">Copy the Caption</div>
+                </code>
+            </div>
+
+            <button class="danger-button">Reset</button>
+
+        </div>
+    </section>
+
+    <div style="padding-bottom: 1000px;"></div>
+    <footer>
+        <p>All rights reserved.</p>
+    </footer>
+
+    <script>
+
+        let resetButtonElement = document.querySelector(".danger-button");
+
+        resetButtonElement.addEventListener('click', function() {
+            location.reload();
+        })
+
+        async function handleFormSubmit(event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+            
+            const form = document.getElementById('uploadForm');
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                document.getElementById('result').innerText = result.message;
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('result').innerText = 'An error occurred!';
+            }
+        }
+
+        function copyCode() {
+            const codeBlock = document.querySelector('#result').innerText;
+
+            navigator.clipboard.writeText(codeBlock).then(() => {
+                console.log('Code copied to clipboard!');
+            }).catch(err => {
+                console.error('Failed to copy code: ', err);
+            });
+        }
+    </script>
+</body>
+</html>

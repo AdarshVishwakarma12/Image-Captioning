@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Image Captioning</h1>
+    </header>
+
+    <nav>
+        <a href="\index">Home</a>
+        <a href="\captioning">Captioning Model</a>
+        <a href="\about">About Us</a>
+        <a href="\contact">Contact Us</a>
+    </nav>
+
+    <section id="about" class="active">
+     
+		        <h2>Meet the Team</h2>
+        <p>We are a passionate team of developers dedicated to advancing the field of image captioning through artificial intelligence. Our team consists of skilled individuals with expertise across different areas of technology, each bringing their own unique strengths and perspectives. Below, you will find a little more about each team member, their qualifications, roles, and contact information.</p>
+		<br><img src="{{ url_for('static', filename='im4.jpg') }}" width="0" height="300" alt="Captioning Model Illustration"></br>
+        <!-- Developer Sections -->
+        <div class="developer" onclick="toggleDetails('dev3')">
+            <img src="{{ url_for('static', filename='img6.png') }}" alt="Adarsh Vishwakarma">
+            <strong>Adarsh Vishwakarma</strong>
+        </div>
+        <div id="dev3" class="developer-details">
+            <img src="{{ url_for('static', filename='img6.png') }}" alt="Adarsh Vishwakarma">
+            <p><strong>Name:</strong> Adarsh Vishwakarma</p>
+            <p><strong>Roll No:</strong> 2101620100009</p>
+            <p><strong>Qualification:</strong> B.Tech in Computer Science</p>
+            <p><strong>Contact: </strong><a href="mailto:adarshcs12level@gmail.com">adarshcs12level@gmail.com</a></p>
+        </div>
+        
+ 	    <div class="developer" onclick="toggleDetails('dev4')">
+            <img src="{{ url_for('static', filename='img4.png') }}" alt="Afnan Khan">
+            <strong>Afnan Khan</strong>
+        </div>
+        <div id="dev4" class="developer-details">
+            <img src="{{ url_for('static', filename='img4.png') }}" alt="Afnan Khan">
+            <p><strong>Name:</strong> Afnan Khan</p>
+            <p><strong>Roll No:</strong> 2101620100011</p>
+            <p><strong>Qualification:</strong> B.Tech in Computer Science</p>
+            <p><strong>Contact: </strong><a href="mailto:khanafnan232@gmail.com">khanafnan232@gmail.com</a></p>
+        </div>
+
+        <div class="developer" onclick="toggleDetails('dev1')">
+            <img src="{{ url_for('static', filename='img2.jpg') }}" alt="Anurag Pandey">
+            <strong>Anurag Pandey</strong>
+        </div>
+        <div id="dev1" class="developer-details">
+            <img src="{{ url_for('static', filename='img2.jpg') }}" alt="Anurag Pandey">
+            <p><strong>Name:</strong> Anurag Pandey</p>
+            <p><strong>Roll No:</strong> 2101620100031</p>
+            <p><strong>Qualification:</strong> B.Tech in Computer Science</p>
+            <p><strong>Contact: </strong><a href="mailto:anuragpandey15095@gmail.com">anuragpandey15095@gmail.com</a></p>
+        </div>
+
+        <div class="developer" onclick="toggleDetails('dev2')">
+            <img src="{{ url_for('static', filename='img5.png') }}" alt="Arpit Patel">
+            <strong>Arpit Patel</strong>
+        </div>
+        <div id="dev2" class="developer-details">
+            <img src="{{ url_for('static', filename='img5.png') }}" alt="Arpit Patel">
+            <p><strong>Name:</strong> Arpit Patel</p>
+            <p><strong>Roll No:</strong> 2101620100034</p>
+            <p><strong>Qualification:</strong> B.Tech in Computer Science</p>
+            <p><strong>Contact: </strong><a href="mailto:imarpitsoe@gmail.com">imarpitsoe@gmail.com</a></p>
+        </div>
+
+
+    </section>
+    <div style="padding-bottom: 1000px;"></div>
+    <footer>
+        <p>All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleDetails(devId) {
+            var details = document.getElementById(devId);
+            details.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

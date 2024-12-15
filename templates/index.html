@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Captioning</title>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Image Captioning</h1>
+    </header>
+
+    <nav>
+        <a href="\index">Home</a>
+        <a href="\captioning">Captioning Model</a>
+        <a href="\about">About Us</a>
+        <a href="\contact">Contact Us</a>
+    </nav>
+
+    <section id="home" class="active">
+        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+            <div style="max-width: 50%; padding: 20px;">
+                <h2>Welcome to Image Caption Generator</h2>
+                <p><b>Explore the amazing possibilities of Image Captioning at the crossroads of AI and creativity!</b></p>
+                <div class="animated-text">
+                    Image Captioning uses artificial intelligence to automatically generate textual descriptions for images.
+                    It helps bridge the gap between visual and textual data, enabling applications in accessibility, search, and social media.
+                </div>
+                <button class="try-it-now-btn" onclick="window.location.href='/captioning'">Try it Now</button>
+            </div>
+            <div style="max-width: 40%; text-align: center;">
+                <img src="{{ url_for('static', filename='img1.jpg') }}" alt="Captioning Illustration">
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <h1><b>Example of Image Captioning</b></h1>
+        </div>
+        <div style="align-items: center;">
+            <img src="{{ url_for('static', filename='img7.png') }}" alt="img captioning example">
+            <p><b>Predicted Caption:</b> A Black and White Dog is swimming in a pool.</p>
+        </div>
+    </section>
+
+    <div style="padding-bottom: 1000px;"></div>
+    <footer>
+        <p>All rights reserved.</p>
+    </footer>
+</body>
+</html>
